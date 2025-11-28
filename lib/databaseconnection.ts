@@ -1,22 +1,10 @@
 import mongoose from "mongoose";
 import * as dotenv from "dotenv";
+import path from "path";
 
-dotenv.config();
+// Ensure env vars are loaded
+dotenv.config({ path: path.resolve(process.cwd(), '.env') });
 
-
-const MONGODB_URI: string = process.env.MONGODB_URI as string;
-const DB_NAME: string = process.env.MONGODB_DB_NAME || "E-STORE-NEXTJS";
-
-console.log("DEBUG: Loaded MONGO URI =>", MONGODB_URI); // DEBUG
-
-if (!MONGODB_URI || typeof MONGODB_URI !== "string") {
-  const errorMessage =
-    "❌ MONGODB_URI is missing. " +
-    "If you are deploying to Vercel, please add 'MONGODB_URI' to your Project Settings > Environment Variables. " +
-    "Locally, ensure you have a .env file with MONGODB_URI defined.";
-  console.error(errorMessage);
-  throw new Error(errorMessage);
-}
 
 // TypeScript Global Declaration for caching
 declare global {
@@ -31,9 +19,23 @@ declare global {
 const cached = global.mongooseCache || { conn: null, promise: null };
 
 export async function connectDB(): Promise<typeof mongoose> {
+  const MONGODB_URI = process.env.MONGODB_URI;
+  const DB_NAME = process.env.MONGODB_DB_NAME || "E-STORE-NEXTJS";
+
+  // console.log("DEBUG: Loaded MONGO URI =>", MONGODB_URI); // DEBUG
+
+  if (!MONGODB_URI || typeof MONGODB_URI !== "string") {
+    const errorMessage =
+      "❌ MONGODB_URI is missing. " +
+      "If you are deploying to Vercel, please add 'MONGODB_URI' to your Project Settings > Environment Variables. " +
+      "Locally, ensure you have a .env file with MONGODB_URI defined.";
+    console.error(errorMessage);
+    throw new Error(errorMessage);
+  }
+
   // Use cached connection if available
   if (cached.conn) {
-    console.log("✅ Using cached DB connection");
+    // console.log("✅ Using cached DB connection");
     return cached.conn;
   }
 
