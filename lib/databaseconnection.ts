@@ -6,16 +6,21 @@ const DB_NAME: string = process.env.MONGODB_DB_NAME || "E-STORE-NEXTJS";
 console.log("DEBUG: Loaded MONGO URI =>", MONGODB_URI); // DEBUG
 
 if (!MONGODB_URI || typeof MONGODB_URI !== "string") {
-  throw new Error("❌ MONGODB_URI is missing or not a valid string");
+  const errorMessage =
+    "❌ MONGODB_URI is missing. " +
+    "If you are deploying to Vercel, please add 'MONGODB_URI' to your Project Settings > Environment Variables. " +
+    "Locally, ensure you have a .env file with MONGODB_URI defined.";
+  console.error(errorMessage);
+  throw new Error(errorMessage);
 }
 
 // TypeScript Global Declaration for caching
 declare global {
   var mongooseCache:
     | {
-        conn: typeof mongoose | null;
-        promise: Promise<typeof mongoose> | null;
-      }
+      conn: typeof mongoose | null;
+      promise: Promise<typeof mongoose> | null;
+    }
     | undefined;
 }
 

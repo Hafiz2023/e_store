@@ -71,7 +71,7 @@ export default function ProductPage() {
             'Pre-washed and pre-shrunk',
             'Machine wash cold with like colors',
         ],
-        reviews: { href: '#', average: 4, totalCount: 117 },
+        reviews: { href: '#reviews', average: 4, totalCount: 117 },
     };
 
     const handleAddToCart = () => {
@@ -300,7 +300,7 @@ export default function ProductPage() {
                         </div>
 
                         {/* Customer Reviews Section */}
-                        <div className="mt-10 border-t pt-10">
+                        <div id="reviews" className="mt-10 border-t pt-10">
                             <h3 className="text-lg font-medium text-gray-900">Customer Reviews</h3>
                             <div className="mt-6 space-y-6">
                                 <div className="flex items-start">

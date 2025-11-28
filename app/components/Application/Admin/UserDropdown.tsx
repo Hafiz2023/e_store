@@ -43,14 +43,14 @@ const UserDropdown = () => {
           <DropdownMenuSeparator />
 
           <DropdownMenuItem asChild>
-            <Link href="#" className="flex items-center gap-2 cursor-pointer">
+            <Link href="/admin/Dashboard/products/add" className="flex items-center gap-2 cursor-pointer">
               <IoShirtOutline />
               <span>New Product</span>
             </Link>
           </DropdownMenuItem>
 
           <DropdownMenuItem asChild>
-            <Link href="#" className="flex items-center gap-2 cursor-pointer">
+            <Link href="/admin/Dashboard/orders" className="flex items-center gap-2 cursor-pointer">
               <MdOutlineShoppingBag />
               <span>Orders</span>
             </Link>
