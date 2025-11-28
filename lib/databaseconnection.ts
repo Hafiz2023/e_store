@@ -1,4 +1,8 @@
 import mongoose from "mongoose";
+import * as dotenv from "dotenv";
+
+dotenv.config();
+
 
 const MONGODB_URI: string = process.env.MONGODB_URI as string;
 const DB_NAME: string = process.env.MONGODB_DB_NAME || "E-STORE-NEXTJS";
