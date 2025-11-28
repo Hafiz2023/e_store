@@ -6,7 +6,7 @@ import { Users, ShoppingBag, DollarSign, TrendingUp } from 'lucide-react';
 export default function AdminDashboard() {
     return (
         <div className="space-y-6">
-            <h1 className="text-3xl font-bold tracking-tight">Dashboard Overview</h1>
+            <h1 className="text-3xl font-bold tracking-tight">Dashboard</h1>
 
             {/* Stats Cards */}
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
